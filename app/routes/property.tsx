@@ -11,6 +11,8 @@ type ApiResponse = {
   properties: Property[];
 };
 
+declare var RS_TOKEN: string;
+
 async function getData(token: string) {
   //const token = process.env.RS_TOKEN;
 
@@ -23,8 +25,7 @@ async function getData(token: string) {
 }
 
 export const loader: LoaderFunction = async ({ context }) => {
-  const data = await getData(context.RS_TOKEN as string);
-
+  const data = await getData(RS_TOKEN);
   return json(data);
 };
 
